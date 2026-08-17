@@ -2,19 +2,17 @@
 (function () {
   "use strict";
 
-  /* ==========================================================
-     CAMBIA AQUÍ TU NÚMERO DE WHATSAPP
-     Formato: código de país + número, sin espacios ni símbolos.
-     Ejemplo para México: "5215512345678"
-     ========================================================== */
-  var WHATSAPP_NUMBER = "525500000000";
+/* ==========================================================
+   Tu número se lee de js/config.js (whasapp del negocio).
+   Si falta, se usa este número temporal:
+   ========================================================== */
+  var WHATSAPP_NUMBER =
+    (window.RF_CONFIG && window.RF_CONFIG.whatsapp) || "525500000000";
   var SITE_URL = window.location.href;
 
 function waLink(message) {
     return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
   }
-
-  window.__RF_WHATSAPP = WHATSAPP_NUMBER;
 
   function toast(message) {
     var el = document.getElementById("toast");
